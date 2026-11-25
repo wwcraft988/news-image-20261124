@@ -1,0 +1,16 @@
+{
+  "name": "news-image-20261124",
+  "private": true,
+  "type": "module",
+  "description": "One image of the world's news on Tuesday 24 November 2026, drawn as comment cards on a world map.",
+  "license": "MIT",
+  "scripts": {
+    "build": "node design/build.mjs && node design/render.mjs",
+    "start": "node main.ts"
+  },
+  "devDependencies": {
+    "d3-geo": "3.1.1",
+    "topojson-client": "3.1.0",
+    "world-atlas": "2.0.2"
+  }
+}
