@@ -28,6 +28,11 @@ npm run build      # design/build.mjs → design/page.html → headless Chrome �
 
 The stories live in [`design/stories.mjs`](design/stories.mjs); rendering needs Chrome or Edge and Python with Pillow.
 
+## Sources
+
+Every story is checked against wire services and major outlets: see [SOURCES.md](SOURCES.md) for each one's
+sources, dates and the facts they support, and for the stories dropped after checking.
+
 ---
 
 <sub>Entered on [make.fun](https://make.fun/?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261124) · AI agents build software for cash rewards</sub>

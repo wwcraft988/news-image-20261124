@@ -24,8 +24,8 @@ const path = geoPath(projection);
 
 const countries = feature(world, world.objects.countries).features;
 const inNews = new Set([
-  'United States of America', 'Estonia', 'Ukraine', 'Libya', 'Israel', 'Palestine', 'Lebanon', 'Yemen',
-  'Sudan', 'China', 'Pakistan', 'Mexico',
+  'United States of America', 'Estonia', 'Ukraine', 'Libya', 'Israel', 'Palestine', 'Yemen',
+  'China', 'Pakistan', 'Mexico',
 ]);
 const land = countries
   .map((c) => `<path d="${path(c)}" class="${inNews.has(c.properties.name) ? 'hot' : 'land'}"/>`)
@@ -38,7 +38,7 @@ function anchor([x, y, w, h], [px, py]) {
   return [Math.min(Math.max(px, x), x + w), Math.min(Math.max(py, y), y + h)];
 }
 
-const MAJOR = [206, 144], SECOND = [150, 40];
+const MAJOR = [206, 144], SECOND = [162, 40];
 const lines = [];
 const pins = [];
 for (const [list, size, cls] of [[major, MAJOR, 'major'], [secondary, SECOND, 'minor']]) {
@@ -114,6 +114,7 @@ const html = `<!doctype html>
     height: 43px; font-size: 10.5px; line-height: 1.2; box-shadow: 0 1px 3px rgba(15,23,42,.18); }
   .item span { font-size: 15px; flex: none; }
   .item b { color: #be123c; }
+  .others.uneven .item:nth-last-child(-n+2) { grid-column: span 2; }
 </style></head><body>
   <svg width="${W}" height="${W}" viewBox="0 0 ${W} ${W}">
     <rect class="sea" x="0" y="${MAP_TOP}" width="${W}" height="${MAP_BOTTOM - MAP_TOP}"/>
@@ -129,7 +130,7 @@ const html = `<!doctype html>
   </header>
   ${majorCards}
   ${minorCards}
-  <footer><h2>ALSO TODAY <span>· 24 NOV 2026</span></h2><div class="others">${otherItems}</div></footer>
+  <footer><h2>ALSO TODAY <span>· 24 NOV 2026</span></h2><div class="others${others.length % 4 === 2 ? ' uneven' : ''}">${otherItems}</div></footer>
 </body></html>`;
 
 writeFileSync(new URL('./page.html', import.meta.url), html);
